@@ -1,0 +1,30 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: #1f2937;
+  background: #f3f4f6;
+}
+
+.editor {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  grid-template-rows: auto 1fr;
+  gap: 12px;
+  height: 100vh;
+  padding: 12px;
+}
+
+.editor > .toolbar { grid-column: 1 / -1; display: flex; gap: 8px; }
+
+.canvas {
+  position: relative;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  overflow: hidden;
+}
+
+.panel { background: #fff; border: 1px solid #d1d5db; padding: 12px; }
+.panel__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.panel__title { margin: 0; font-size: 16px; }
