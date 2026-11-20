@@ -1,5 +1,7 @@
+import type {ObjectType} from "../types/editor.types.ts";
+
 type ToolbarProps = {
-    onAdd: (type: "rectangle" | "text" | "circle") => void;
+    onAdd: (type: ObjectType) => void;
 };
 
 export function Toolbar({ onAdd }: ToolbarProps) {

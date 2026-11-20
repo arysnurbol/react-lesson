@@ -5,4 +5,6 @@ export type EditorObject = {
     type: ObjectType;
     name: string;
     color: string;
+    x: number;
+    y: number;
 };

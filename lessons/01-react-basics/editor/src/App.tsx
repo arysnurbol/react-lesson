@@ -4,7 +4,10 @@ import { Toolbar } from "./components/Toolbar";
 import { Canvas } from "./components/Canvas";
 import { PropertiesPanel } from "./components/PropertiesPanel";
 
-import type { EditorObject } from "./types/editor.types";
+import type {EditorObject, ObjectType} from "./types/editor.types";
+
+const DEFAULT_NAMES: Record<ObjectType, string> = { rectangle: 'Rectangle', circle: 'Circle', text: 'Text' };
+
 
 function App() {
   const [objects, setObjects] = useState<EditorObject[]>([]);
@@ -14,12 +17,14 @@ function App() {
   const selectedObject =
       objects.find(object => object.id === selectedId) ?? null;
 
-  const addObject = (type: "rectangle" | "text" | "circle") => {
+  const addObject = (type: ObjectType) => {
     const newObject: EditorObject = {
       id: crypto.randomUUID(),
       type,
-      name: type === "rectangle" ? "Rectangle" : type === "circle" ? "circle" : "Text",
-      color: "#3B82F6"
+      name: DEFAULT_NAMES[type],
+      color: "#3B82F6",
+        x: 40,
+        y: 40,
     };
 
     setObjects(prev => [...prev, newObject]);

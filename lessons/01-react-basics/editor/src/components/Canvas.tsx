@@ -15,7 +15,7 @@ export function Canvas({
         <div>
             <h2>Canvas</h2>
 
-            {objects.map(object => (
+            {objects.length === 0 ? <div>Please add object.</div> : objects.map(object => (
                 <div
                     key={object.id}
                     onClick={() => onSelect(object.id)}

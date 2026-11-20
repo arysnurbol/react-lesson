@@ -19,7 +19,9 @@ export function PropertiesPanel({
         <div>
             <h2>Properties</h2>
 
-            <p>{selectedObject.name}</p>
+            <p>Selected object name: {selectedObject.name}</p>
+            <p>x: {selectedObject.x} </p>
+            <p>y: {selectedObject.y} </p>
 
             <input
                 type="color"
