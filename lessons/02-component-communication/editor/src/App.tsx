@@ -51,11 +51,10 @@ function App() {
                 selectedId={selectedId} 
                 onSelect={setSelectedId}
                 onDelete={deleteObject}
-                onChange={updateObject}
                 />
                 <PropertiesPanel
                     selectedObject={selectedObject}
-                    onChange={patch => selectedObject && updateObject(selectedObject.id, patch)}
+                    onChange={updateObject}
                     onDelete={() => selectedObject && deleteObject(selectedObject.id)}
                 />
             </div>
