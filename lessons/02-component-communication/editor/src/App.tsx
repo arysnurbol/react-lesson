@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import { Toolbar } from "./components/Toolbar";
-import { Canvas } from "./components/Canvas";
-import { PropertiesPanel } from "./components/PropertiesPanel";
-
 import type { EditorObject, EditorObjectPatch, ObjectType } from "./types/editor.types";
+import { Toolbar } from "./components/Toolbar";
+import { EditorLayout } from "./components/EditorLayout";
+import { Canvas } from "./components/Canvas";
 import { LayersPanel } from "./components/LayersPanel";
+import { PropertiesPanel } from "./components/PropertiesPanel";
 
 const DEFAULT_NAMES: Record<ObjectType, string> = { rectangle: "Rectangle", circle: "Circle", text: "Text" };
 
@@ -40,25 +40,28 @@ function App() {
     };
 
     return (
-        <div className="editor">
-            <Toolbar onAdd={addObject}/>
-
-            <Canvas objects={objects} selectedId={selectedId} onSelect={setSelectedId}/>
-
-            <div className="sidebar">
-                <LayersPanel 
-                objects={objects} 
-                selectedId={selectedId} 
-                onSelect={setSelectedId}
-                onDelete={deleteObject}
-                />
-                <PropertiesPanel
-                    selectedObject={selectedObject}
-                    onChange={patch => selectedObject && updateObject(selectedObject.id, patch)}
-                    onDelete={() => selectedObject && deleteObject(selectedObject.id)}
-                />
-            </div>
-        </div>
+        <EditorLayout 
+        toolbar={<Toolbar onAdd={addObject} />}
+        canvas={
+        <Canvas objects={objects} selectedId={selectedId} onSelect={setSelectedId}/>
+    }
+    sidebar={
+        <>
+        <LayersPanel 
+            objects={objects} 
+            selectedId={selectedId} 
+            onSelect={setSelectedId}
+            onDelete={deleteObject}
+            />
+            <PropertiesPanel
+                selectedObject={selectedObject}
+                onChange={patch => selectedObject && updateObject(selectedObject.id, patch)}
+                onDelete={() => selectedObject && deleteObject(selectedObject.id)}
+            />
+        </>
+            
+    }
+        />
     );
 }
 
