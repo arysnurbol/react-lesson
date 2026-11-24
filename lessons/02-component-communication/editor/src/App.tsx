@@ -51,6 +51,7 @@ function App() {
                 selectedId={selectedId} 
                 onSelect={setSelectedId}
                 onDelete={deleteObject}
+                onChange={updateObject}
                 />
                 <PropertiesPanel
                     selectedObject={selectedObject}
