@@ -5,6 +5,7 @@ import { Canvas } from "./components/Canvas";
 import { PropertiesPanel } from "./components/PropertiesPanel";
 
 import type { EditorObject, EditorObjectPatch, ObjectType } from "./types/editor.types";
+import {LayersPanel} from "./components/LayersPanel.tsx";
 
 const DEFAULT_NAMES: Record<ObjectType, string> = { rectangle: "Rectangle", circle: "Circle", text: "Text" };
 
@@ -40,15 +41,23 @@ function App() {
 
     return (
         <div className="editor">
-            <Toolbar onAdd={addObject} />
+            <Toolbar onAdd={addObject}/>
 
-            <Canvas objects={objects} selectedId={selectedId} onSelect={setSelectedId} />
+            <Canvas objects={objects} selectedId={selectedId} onSelect={setSelectedId}/>
 
-            <PropertiesPanel
-                selectedObject={selectedObject}
-                onChange={patch => selectedObject && updateObject(selectedObject.id, patch)}
-                onDelete={() => selectedObject && deleteObject(selectedObject.id)}
-            />
+            <div className="sidebar">
+                <LayersPanel 
+                objects={objects} 
+                selectedId={selectedId} 
+                onSelect={setSelectedId}
+                onDelete={deleteObject}
+                />
+                <PropertiesPanel
+                    selectedObject={selectedObject}
+                    onChange={patch => selectedObject && updateObject(selectedObject.id, patch)}
+                    onDelete={() => selectedObject && deleteObject(selectedObject.id)}
+                />
+            </div>
         </div>
     );
 }
