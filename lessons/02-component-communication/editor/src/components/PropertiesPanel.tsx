@@ -1,10 +1,10 @@
 import type { EditorObject, EditorObjectPatch } from "../types/editor.types";
 import { Panel } from "./Panel";
-import type React from "react";
+import { NumberField } from "./NumberField";
 
 type PropertiesPanelProps = {
     selectedObject: EditorObject | null;
-    onChange: (id: string, patch: EditorObjectPatch) => void;
+    onChange: (patch: EditorObjectPatch) => void;
     onDelete: () => void;
 };
 
@@ -17,58 +17,43 @@ export function PropertiesPanel({ selectedObject, onChange, onDelete }: Properti
         );
     }
 
-    const handlePositionChange = (id: string,
-                                  e: React.ChangeEvent<HTMLInputElement>,
-                                  axis: "x" | "y"
-    ) => {
-        const value = e.target.valueAsNumber;
-        if (Number.isNaN(value)) return;
-
-        onChange(id,{ [axis]: value });
-    };
-
     return (
         <Panel
             title="Properties"
-            actions={<button onClick={onDelete}>Delete</button>}
+            actions={<button type="button" onClick={onDelete}>Delete</button>}
         >
             <p>id: {selectedObject.id.slice(0, 8)}</p>
             <p>type: {selectedObject.type}</p>
-            <p>x: {selectedObject.x} y: {selectedObject.y}</p>
 
-            <label>
-                color{" "}
-                <input
-                    type="color"
-                    value={selectedObject.color}
-                    onChange={event => onChange(selectedObject.id, {color: event.target.value})}
-                />
-            </label>
-
-            <input
-                            type="text"
-                            value={selectedObject.name}
-                            onChange={event => onChange(selectedObject.id, {name: event.target.value})}
-                        />
-
-            <div style={{display: "flex", gap: "10px"}}>
-                <label onClick={(e) => e.stopPropagation()}>
-                    X:
+            <div className="fields">
+                <label>
+                    name{" "}
                     <input
-                        name="x"
-                        type="number"
-                        value={selectedObject.x}
-                        onChange={(e) => handlePositionChange(selectedObject.id, e, "x")}
+                        type="text"
+                        value={selectedObject.name}
+                        onChange={e => onChange({ name: e.target.value })}
                     />
                 </label>
-            </div>
-            <div style={{display: "flex", gap: "10px"}}>
-                <label onClick={(e) => e.stopPropagation()}>
-                    Y:
+
+                <NumberField
+                    key={`${selectedObject.id}-x`}
+                    label="x"
+                    value={selectedObject.x}
+                    onChange={x => onChange({ x })}
+                />
+                <NumberField
+                    key={`${selectedObject.id}-y`}
+                    label="y"
+                    value={selectedObject.y}
+                    onChange={y => onChange({ y })}
+                />
+
+                <label>
+                    color{" "}
                     <input
-                        type="number"
-                        value={selectedObject.y}
-                        onChange={(e) => handlePositionChange(selectedObject.id, e, "y")}
+                        type="color"
+                        value={selectedObject.color}
+                        onChange={e => onChange({ color: e.target.value })}
                     />
                 </label>
             </div>

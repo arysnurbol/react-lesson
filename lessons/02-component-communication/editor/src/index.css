@@ -28,3 +28,18 @@ body {
 .panel { background: #fff; border: 1px solid #d1d5db; padding: 12px; }
 .panel__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .panel__title { margin: 0; font-size: 16px; }
+
+.sidebar { display: flex; flex-direction: column; gap: 12px; min-height: 0; overflow: auto; }
+
+.layer-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.layer-item:hover { background: #f3f4f6; }
+
+.fields { display: flex; flex-direction: column; gap: 8px; }
+.fields input[type="text"], .fields input[type="number"] { width: 100%; }

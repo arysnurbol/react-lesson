@@ -5,7 +5,7 @@ import { Canvas } from "./components/Canvas";
 import { PropertiesPanel } from "./components/PropertiesPanel";
 
 import type { EditorObject, EditorObjectPatch, ObjectType } from "./types/editor.types";
-import {LayersPanel} from "./components/LayersPanel.tsx";
+import { LayersPanel } from "./components/LayersPanel";
 
 const DEFAULT_NAMES: Record<ObjectType, string> = { rectangle: "Rectangle", circle: "Circle", text: "Text" };
 
@@ -54,7 +54,7 @@ function App() {
                 />
                 <PropertiesPanel
                     selectedObject={selectedObject}
-                    onChange={updateObject}
+                    onChange={patch => selectedObject && updateObject(selectedObject.id, patch)}
                     onDelete={() => selectedObject && deleteObject(selectedObject.id)}
                 />
             </div>
