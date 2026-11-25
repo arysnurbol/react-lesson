@@ -29,8 +29,8 @@
 | # | Сабақ | Тақырыптар | Практика / қабылдау критерийі |
 |---|---|---|---|
 | 01 | React Architecture ✅ *(ChatGPT-та өтілді)* | Vite жобасы, Virtual DOM, reconciliation, Functional Components, JSX, Props, `useState`, conditional rendering, lists & `key` | Мини-редактордың UI қаңқасы: Toolbar / Canvas / PropertiesPanel, объект қосу/таңдау |
-| 02 | Компоненттер коммуникациясы | Parent→Child (props), Child→Parent (callback), Sibling (lifting state up), event handlers типизациясы, `children`, composition vs inheritance. Angular `@Input/@Output` салыстыру | Sibling компоненттер ортақ state арқылы байланысады; prop drilling 3 деңгейден аспайды |
-| 03 | Side effects | `useEffect` (синхрондау ретінде), dependency array, cleanup, StrictMode double-mount, data fetching, race condition. `ngOnInit/ngOnDestroy`-мен айырмашылығы | API-ден тізім алу: loading / error / abort controller |
+| 02 | Компоненттер коммуникациясы ✅ | Parent→Child (props), Child→Parent (callback), Sibling (lifting state up), event handlers типизациясы, `children`, composition vs inheritance. Angular `@Input/@Output` салыстыру | Sibling компоненттер ортақ state арқылы байланысады; prop drilling 3 деңгейден аспайды |
+| 03 | Side effects 🔄 *(`lessons/03-side-effects/`)* | `useEffect` (синхрондау ретінде), dependency array, cleanup, StrictMode double-mount, data fetching, race condition. `ngOnInit/ngOnDestroy`-мен айырмашылығы | API-ден тізім алу: loading / error / abort controller |
 | 04 | Refs және Context | `useRef` (DOM + mutable value), `forwardRef`/ref as prop (React 19), `useContext`, Context-тің re-render салдары. Angular DI салыстыру | Theme + Selected object Context; canvas DOM-ға ref |
 | 05 | Complex state | `useReducer`, immutable updates, derived state, discriminated union actions. NgRx reducer салыстыру | Редактор state-ін `useReducer`-ге көшіру: add / update / remove / select |
 | 06 | Custom Hooks | Логиканы шығару, hook ережелері, `useDebounce`, `useLocalStorage`, `useKeyboardShortcut`. Angular Service салыстыру | 3 custom hook + редакторға Delete/Ctrl+Z hotkeys |
